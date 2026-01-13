@@ -50,14 +50,16 @@
             background: rgba(245, 245, 220, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(204, 85, 0, 0.6);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .glass-dark {
             background: rgba(200, 200, 184, 0.2);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(204, 85, 0, 0.6);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         /* Navigation */
@@ -168,6 +170,8 @@
             max-width: 56rem;
             margin: 0 auto;
             text-align: center;
+            border: 2px solid rgba(204, 85, 0, 0.6);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .hero-icon {
@@ -244,6 +248,8 @@
             overflow: hidden;
             border-radius: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(204, 85, 0, 0.6);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .gallery-item:hover {
@@ -513,6 +519,22 @@
                 grid-template-columns: repeat(4, minmax(0, 1fr));
             }
         }
+        /* Bubble Letter Headings with Shine */
+        h1, h2, h3 {
+            color: #4E342E !important;
+            font-family: 'Comic Sans MS', 'Marker Felt', 'Chalkboard SE', cursive !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.08em !important;
+            text-shadow: 
+                3px 3px 0px #795548,
+                5px 5px 0px #5D4037,
+                7px 7px 0px #4E342E,
+                2px 2px 15px rgba(255, 255, 255, 0.6),
+                -2px -2px 5px rgba(255, 255, 255, 0.9),
+                inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+            padding: 0.3em 0.5em !important;
+            border-radius: 40px !important;
+        }
     </style>
 </head>
 <body class="gradient-bg">
@@ -520,7 +542,7 @@
     <nav class="glass">
         <div class="container">
             <div class="nav-content">
-                <h1 class="nav-brand animate-float">Ruxilalji</h1>
+                <h1 class="nav-brand animate-float">Ruxi</h1>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#gallery">Gallery</a></li>
@@ -710,7 +732,7 @@
     <!-- Footer -->
     <footer class="glass-dark">
         <div class="container footer-content">
-            <p class="footer-text">© 2025 Ruxilalji. Built with ❤️ and creativity.</p>
+            <p class="footer-text">© 2025 Ruxi. Built with ❤️ and creativity.</p>
             <div class="social-links">
                 <a href="https://github.com/ruxilalji" target="_blank" rel="noopener noreferrer">
                     <svg class="social-icon" viewBox="0 0 24 24">
