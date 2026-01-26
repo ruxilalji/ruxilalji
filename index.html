@@ -44,6 +44,24 @@
             position: relative;
         }
 
+        /* Abstract art background pattern */
+        .abstract-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .abstract-bg svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.85;
+        }
+
         /* Organic blob backgrounds */
         .gradient-bg::before {
             content: '';
@@ -89,7 +107,7 @@
 
         /* Glass morphism effects - earth tone style */
         .glass {
-            background: rgba(245, 237, 224, 0.7);
+            background: rgba(245, 237, 224, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(139, 90, 60, 0.2);
@@ -97,7 +115,7 @@
         }
 
         .glass-dark {
-            background: rgba(44, 44, 44, 0.85);
+            background: rgba(44, 44, 44, 0.9);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(212, 184, 150, 0.3);
@@ -652,6 +670,92 @@
     </style>
 </head>
 <body class="gradient-bg">
+    <!-- Abstract Art Background -->
+    <div class="abstract-bg">
+        <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#D4B896;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#C4A882;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#8B5A3C;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#6B3D2E;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="grad3" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2C2C2C;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#3D3D3D;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="grad4" x1="50%" y1="0%" x2="50%" y2="100%">
+                    <stop offset="0%" style="stop-color:#F5EDE0;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#E8DED0;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Base cream background -->
+            <rect width="100%" height="100%" fill="#FAF7F2"/>
+            
+            <!-- Large flowing shapes - mimicking the artwork -->
+            <!-- Bottom left dark shape -->
+            <path d="M-100 1200 Q 200 900, 100 600 Q 0 400, 200 200 Q 350 50, 500 150 Q 650 250, 550 450 Q 450 650, 300 800 Q 150 950, 200 1100 Q 250 1200, -100 1200 Z" fill="url(#grad3)" opacity="0.9">
+                <animate attributeName="d" dur="20s" repeatCount="indefinite" values="
+                    M-100 1200 Q 200 900, 100 600 Q 0 400, 200 200 Q 350 50, 500 150 Q 650 250, 550 450 Q 450 650, 300 800 Q 150 950, 200 1100 Q 250 1200, -100 1200 Z;
+                    M-100 1200 Q 150 950, 80 650 Q 10 450, 180 220 Q 320 80, 480 170 Q 620 280, 530 470 Q 420 680, 280 820 Q 130 980, 180 1120 Q 230 1200, -100 1200 Z;
+                    M-100 1200 Q 200 900, 100 600 Q 0 400, 200 200 Q 350 50, 500 150 Q 650 250, 550 450 Q 450 650, 300 800 Q 150 950, 200 1100 Q 250 1200, -100 1200 Z"/>
+            </path>
+            
+            <!-- Middle tan/brown curve -->
+            <path d="M300 1200 Q 450 1000, 400 750 Q 350 500, 550 350 Q 750 200, 900 350 Q 1050 500, 950 700 Q 850 900, 700 1000 Q 550 1100, 500 1200 Z" fill="url(#grad2)" opacity="0.85">
+                <animate attributeName="d" dur="18s" repeatCount="indefinite" values="
+                    M300 1200 Q 450 1000, 400 750 Q 350 500, 550 350 Q 750 200, 900 350 Q 1050 500, 950 700 Q 850 900, 700 1000 Q 550 1100, 500 1200 Z;
+                    M280 1200 Q 430 1020, 380 770 Q 330 520, 530 370 Q 730 220, 880 370 Q 1030 520, 930 720 Q 830 920, 680 1020 Q 530 1120, 480 1200 Z;
+                    M300 1200 Q 450 1000, 400 750 Q 350 500, 550 350 Q 750 200, 900 350 Q 1050 500, 950 700 Q 850 900, 700 1000 Q 550 1100, 500 1200 Z"/>
+            </path>
+            
+            <!-- Light cream flowing shape -->
+            <path d="M600 1200 Q 700 950, 800 700 Q 900 450, 1100 400 Q 1300 350, 1400 500 Q 1500 650, 1350 800 Q 1200 950, 1100 1050 Q 1000 1150, 900 1200 Z" fill="url(#grad4)" opacity="0.7">
+                <animate attributeName="d" dur="22s" repeatCount="indefinite" values="
+                    M600 1200 Q 700 950, 800 700 Q 900 450, 1100 400 Q 1300 350, 1400 500 Q 1500 650, 1350 800 Q 1200 950, 1100 1050 Q 1000 1150, 900 1200 Z;
+                    M620 1200 Q 720 970, 820 720 Q 920 470, 1120 420 Q 1320 370, 1420 520 Q 1520 670, 1370 820 Q 1220 970, 1120 1070 Q 1020 1170, 920 1200 Z;
+                    M600 1200 Q 700 950, 800 700 Q 900 450, 1100 400 Q 1300 350, 1400 500 Q 1500 650, 1350 800 Q 1200 950, 1100 1050 Q 1000 1150, 900 1200 Z"/>
+            </path>
+            
+            <!-- Top right dark shape -->
+            <path d="M1400 -100 Q 1600 100, 1700 300 Q 1800 500, 1650 650 Q 1500 800, 1350 700 Q 1200 600, 1250 400 Q 1300 200, 1400 -100 Z" fill="url(#grad3)" opacity="0.85">
+                <animate attributeName="d" dur="16s" repeatCount="indefinite" values="
+                    M1400 -100 Q 1600 100, 1700 300 Q 1800 500, 1650 650 Q 1500 800, 1350 700 Q 1200 600, 1250 400 Q 1300 200, 1400 -100 Z;
+                    M1420 -100 Q 1620 120, 1720 320 Q 1820 520, 1670 670 Q 1520 820, 1370 720 Q 1220 620, 1270 420 Q 1320 220, 1420 -100 Z;
+                    M1400 -100 Q 1600 100, 1700 300 Q 1800 500, 1650 650 Q 1500 800, 1350 700 Q 1200 600, 1250 400 Q 1300 200, 1400 -100 Z"/>
+            </path>
+            
+            <!-- Tan accent shape top -->
+            <path d="M800 -100 Q 950 50, 1000 200 Q 1050 350, 950 450 Q 850 550, 750 450 Q 650 350, 700 200 Q 750 50, 800 -100 Z" fill="url(#grad1)" opacity="0.75">
+                <animate attributeName="d" dur="14s" repeatCount="indefinite" values="
+                    M800 -100 Q 950 50, 1000 200 Q 1050 350, 950 450 Q 850 550, 750 450 Q 650 350, 700 200 Q 750 50, 800 -100 Z;
+                    M820 -100 Q 970 70, 1020 220 Q 1070 370, 970 470 Q 870 570, 770 470 Q 670 370, 720 220 Q 770 70, 820 -100 Z;
+                    M800 -100 Q 950 50, 1000 200 Q 1050 350, 950 450 Q 850 550, 750 450 Q 650 350, 700 200 Q 750 50, 800 -100 Z"/>
+            </path>
+            
+            <!-- Right side brown flowing curve -->
+            <path d="M2020 400 Q 1850 500, 1750 700 Q 1650 900, 1800 1000 Q 1950 1100, 2020 950 Z" fill="url(#grad2)" opacity="0.8">
+                <animate attributeName="d" dur="19s" repeatCount="indefinite" values="
+                    M2020 400 Q 1850 500, 1750 700 Q 1650 900, 1800 1000 Q 1950 1100, 2020 950 Z;
+                    M2020 420 Q 1870 520, 1770 720 Q 1670 920, 1820 1020 Q 1970 1120, 2020 970 Z;
+                    M2020 400 Q 1850 500, 1750 700 Q 1650 900, 1800 1000 Q 1950 1100, 2020 950 Z"/>
+            </path>
+            
+            <!-- Small accent cream circle -->
+            <circle cx="1600" cy="200" r="80" fill="#F5EDE0" opacity="0.6">
+                <animate attributeName="r" dur="8s" repeatCount="indefinite" values="80;90;80"/>
+            </circle>
+            
+            <!-- Small brown circle accent -->
+            <circle cx="250" cy="450" r="60" fill="#8B5A3C" opacity="0.5">
+                <animate attributeName="r" dur="10s" repeatCount="indefinite" values="60;70;60"/>
+            </circle>
+        </svg>
+    </div>
+
     <!-- Navigation -->
     <nav class="glass">
         <div class="container">
