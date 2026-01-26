@@ -1030,14 +1030,14 @@
                         </defs>
                         
                         <!-- Journey Path Lines -->
-                        <!-- Gujarat → Columbus → Findlay → Seattle → London → NYC -->
-                        <!-- Based on image coords: Gujarat(720,290), Columbus(255,225), Findlay(252,215), Seattle(145,185), London(490,155), NYC(305,215) -->
+                        <!-- Accurate coordinates based on world map image -->
+                        <!-- Gujarat(693,295), Columbus(248,218), Findlay(245,212), Seattle(118,192), London(463,175), NYC(272,220) -->
                         
-                        <!-- Gujarat to Columbus (across the Pacific/Atlantic) -->
-                        <path d="M720 290 
-                                 Q620 250, 520 235
-                                 Q420 220, 305 215
-                                 L255 225" 
+                        <!-- Gujarat to Columbus (across the globe) -->
+                        <path d="M693 295 
+                                 Q600 260, 500 240
+                                 Q400 225, 300 220
+                                 L248 218" 
                               fill="none" 
                               stroke="url(#pathGradient)" 
                               stroke-width="3" 
@@ -1048,7 +1048,7 @@
                         </path>
                         
                         <!-- Columbus to Findlay -->
-                        <path d="M255 225 L252 215" 
+                        <path d="M248 218 L245 212" 
                               fill="none" 
                               stroke="url(#pathGradient)" 
                               stroke-width="3" 
@@ -1057,7 +1057,7 @@
                               opacity="0.85"/>
                         
                         <!-- Findlay to Seattle -->
-                        <path d="M252 215 Q200 200, 145 185" 
+                        <path d="M245 212 Q180 200, 118 192" 
                               fill="none" 
                               stroke="url(#pathGradient)" 
                               stroke-width="3" 
@@ -1068,9 +1068,9 @@
                         </path>
                         
                         <!-- Seattle to London (over Atlantic) -->
-                        <path d="M145 185 
-                                 Q280 120, 400 140
-                                 Q450 145, 490 155" 
+                        <path d="M118 192 
+                                 Q250 140, 370 160
+                                 Q420 168, 463 175" 
                               fill="none" 
                               stroke="url(#pathGradient)" 
                               stroke-width="3" 
@@ -1081,9 +1081,9 @@
                         </path>
                         
                         <!-- London to NYC -->
-                        <path d="M490 155 
-                                 Q420 170, 350 190
-                                 Q330 200, 305 215" 
+                        <path d="M463 175 
+                                 Q400 190, 340 205
+                                 Q310 212, 272 220" 
                               fill="none" 
                               stroke="url(#pathGradient)" 
                               stroke-width="3" 
@@ -1094,41 +1094,41 @@
                         </path>
                         
                         <!-- Location Dots with Labels -->
-                        <!-- Gujarat, India -->
-                        <circle cx="720" cy="290" r="10" fill="#A0522D" stroke="#FAF7F2" stroke-width="3" filter="url(#glow)">
+                        <!-- Gujarat, India (western India, ~72°E, 22°N) -->
+                        <circle cx="693" cy="295" r="10" fill="#A0522D" stroke="#FAF7F2" stroke-width="3" filter="url(#glow)">
                             <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
                         </circle>
-                        <text x="720" y="320" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="600">Gujarat</text>
+                        <text x="693" y="325" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="600">Gujarat</text>
                         
-                        <!-- Columbus, OH -->
-                        <circle cx="255" cy="225" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                        <!-- Columbus, OH (~83°W, 40°N) -->
+                        <circle cx="248" cy="218" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
                             <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
                         </circle>
-                        <text x="255" y="250" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Columbus</text>
+                        <text x="248" y="243" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Columbus</text>
                         
-                        <!-- Findlay, OH -->
-                        <circle cx="252" cy="215" r="6" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                        <!-- Findlay, OH (~83.6°W, 41°N) - just north of Columbus -->
+                        <circle cx="245" cy="212" r="6" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
                             <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
                         </circle>
-                        <text x="280" y="205" text-anchor="start" fill="#2C2C2C" font-size="11" font-weight="500">Findlay</text>
+                        <text x="215" y="200" text-anchor="end" fill="#2C2C2C" font-size="11" font-weight="500">Findlay</text>
                         
-                        <!-- Seattle, WA -->
-                        <circle cx="145" cy="185" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                        <!-- Seattle, WA (~122°W, 47.5°N) - Pacific Northwest -->
+                        <circle cx="118" cy="192" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
                             <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
                         </circle>
-                        <text x="145" y="210" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Seattle</text>
+                        <text x="118" y="217" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Seattle</text>
                         
-                        <!-- London, UK -->
-                        <circle cx="490" cy="155" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                        <!-- London, UK (~0°, 51.5°N) -->
+                        <circle cx="463" cy="175" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
                             <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
                         </circle>
-                        <text x="490" y="140" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">London</text>
+                        <text x="463" y="160" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">London</text>
                         
-                        <!-- NYC - Current (larger, highlighted) -->
-                        <circle cx="305" cy="215" r="12" fill="#6B3D2E" stroke="#FAF7F2" stroke-width="4" filter="url(#glow)">
+                        <!-- NYC (~74°W, 40.7°N) - Current (larger, highlighted) -->
+                        <circle cx="272" cy="220" r="12" fill="#6B3D2E" stroke="#FAF7F2" stroke-width="4" filter="url(#glow)">
                             <animate attributeName="r" values="12;15;12" dur="1.5s" repeatCount="indefinite"/>
                         </circle>
-                        <text x="305" y="195" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="700">NYC ⭐</text>
+                        <text x="272" y="200" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="700">NYC ⭐</text>
                     </svg>
                 </div>
             </div>
