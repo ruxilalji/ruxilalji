@@ -1013,122 +1013,65 @@
                 <div class="map-image-wrapper">
                     <img src="worldmap.jpg" alt="World Map" class="map-image">
                     
-                    <!-- SVG Overlay for lines and dots -->
-                    <svg class="map-overlay" viewBox="0 0 1160 650" preserveAspectRatio="xMidYMid slice">
+                    <!-- Location dots using percentage positioning -->
+                    <!-- Gujarat, India - western India -->
+                    <div class="map-dot" style="left: 62%; top: 42%;">
+                        <span class="map-dot-label">Gujarat 🇮🇳</span>
+                    </div>
+                    
+                    <!-- Columbus, Ohio -->
+                    <div class="map-dot" style="left: 21.5%; top: 35%;">
+                        <span class="map-dot-label">Columbus</span>
+                    </div>
+                    
+                    <!-- Findlay, Ohio - slightly north of Columbus -->
+                    <div class="map-dot" style="left: 21%; top: 33%;">
+                        <span class="map-dot-label">Findlay</span>
+                    </div>
+                    
+                    <!-- Seattle, Washington - Pacific Northwest -->
+                    <div class="map-dot" style="left: 12%; top: 30%;">
+                        <span class="map-dot-label">Seattle ☕</span>
+                    </div>
+                    
+                    <!-- London, UK -->
+                    <div class="map-dot" style="left: 45%; top: 27%;">
+                        <span class="map-dot-label">London 🇬🇧</span>
+                    </div>
+                    
+                    <!-- NYC - Current location (highlighted) -->
+                    <div class="map-dot current" style="left: 24%; top: 35%;">
+                        <span class="map-dot-label">NYC ⭐ Current</span>
+                    </div>
+                    
+                    <!-- SVG for journey lines -->
+                    <svg class="map-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <defs>
                             <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" style="stop-color:#A0522D;stop-opacity:1" />
                                 <stop offset="100%" style="stop-color:#6B3D2E;stop-opacity:1" />
                             </linearGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
                         </defs>
                         
-                        <!-- Journey Path Lines -->
-                        <!-- Accurate coordinates based on world map image -->
-                        <!-- Gujarat(693,295), Columbus(248,218), Findlay(245,212), Seattle(118,192), London(463,175), NYC(272,220) -->
-                        
-                        <!-- Gujarat to Columbus (across the globe) -->
-                        <path d="M693 295 
-                                 Q600 260, 500 240
-                                 Q400 225, 300 220
-                                 L248 218" 
-                              fill="none" 
-                              stroke="url(#pathGradient)" 
-                              stroke-width="3" 
-                              stroke-dasharray="10,5"
-                              filter="url(#glow)"
-                              opacity="0.85">
-                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="4s" repeatCount="indefinite"/>
-                        </path>
+                        <!-- Gujarat to Columbus -->
+                        <path d="M62 42 Q50 38, 40 36 Q30 34, 21.5 35" 
+                              fill="none" stroke="url(#pathGradient)" stroke-width="0.4" stroke-dasharray="1,0.5" opacity="0.8"/>
                         
                         <!-- Columbus to Findlay -->
-                        <path d="M248 218 L245 212" 
-                              fill="none" 
-                              stroke="url(#pathGradient)" 
-                              stroke-width="3" 
-                              stroke-dasharray="10,5"
-                              filter="url(#glow)"
-                              opacity="0.85"/>
+                        <path d="M21.5 35 L21 33" 
+                              fill="none" stroke="url(#pathGradient)" stroke-width="0.4" stroke-dasharray="1,0.5" opacity="0.8"/>
                         
                         <!-- Findlay to Seattle -->
-                        <path d="M245 212 Q180 200, 118 192" 
-                              fill="none" 
-                              stroke="url(#pathGradient)" 
-                              stroke-width="3" 
-                              stroke-dasharray="10,5"
-                              filter="url(#glow)"
-                              opacity="0.85">
-                            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-                        </path>
+                        <path d="M21 33 Q16 31, 12 30" 
+                              fill="none" stroke="url(#pathGradient)" stroke-width="0.4" stroke-dasharray="1,0.5" opacity="0.8"/>
                         
-                        <!-- Seattle to London (over Atlantic) -->
-                        <path d="M118 192 
-                                 Q250 140, 370 160
-                                 Q420 168, 463 175" 
-                              fill="none" 
-                              stroke="url(#pathGradient)" 
-                              stroke-width="3" 
-                              stroke-dasharray="10,5"
-                              filter="url(#glow)"
-                              opacity="0.85">
-                            <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3.5s" repeatCount="indefinite"/>
-                        </path>
+                        <!-- Seattle to London -->
+                        <path d="M12 30 Q25 22, 35 25 Q40 26, 45 27" 
+                              fill="none" stroke="url(#pathGradient)" stroke-width="0.4" stroke-dasharray="1,0.5" opacity="0.8"/>
                         
                         <!-- London to NYC -->
-                        <path d="M463 175 
-                                 Q400 190, 340 205
-                                 Q310 212, 272 220" 
-                              fill="none" 
-                              stroke="url(#pathGradient)" 
-                              stroke-width="3" 
-                              stroke-dasharray="10,5"
-                              filter="url(#glow)"
-                              opacity="0.85">
-                            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-                        </path>
-                        
-                        <!-- Location Dots with Labels -->
-                        <!-- Gujarat, India (western India, ~72°E, 22°N) -->
-                        <circle cx="693" cy="295" r="10" fill="#A0522D" stroke="#FAF7F2" stroke-width="3" filter="url(#glow)">
-                            <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="693" y="325" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="600">Gujarat</text>
-                        
-                        <!-- Columbus, OH (~83°W, 40°N) -->
-                        <circle cx="248" cy="218" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
-                            <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="248" y="243" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Columbus</text>
-                        
-                        <!-- Findlay, OH (~83.6°W, 41°N) - just north of Columbus -->
-                        <circle cx="245" cy="212" r="6" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
-                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="215" y="200" text-anchor="end" fill="#2C2C2C" font-size="11" font-weight="500">Findlay</text>
-                        
-                        <!-- Seattle, WA (~122°W, 47.5°N) - Pacific Northwest -->
-                        <circle cx="118" cy="192" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
-                            <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="118" y="217" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Seattle</text>
-                        
-                        <!-- London, UK (~0°, 51.5°N) -->
-                        <circle cx="463" cy="175" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
-                            <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="463" y="160" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">London</text>
-                        
-                        <!-- NYC (~74°W, 40.7°N) - Current (larger, highlighted) -->
-                        <circle cx="272" cy="220" r="12" fill="#6B3D2E" stroke="#FAF7F2" stroke-width="4" filter="url(#glow)">
-                            <animate attributeName="r" values="12;15;12" dur="1.5s" repeatCount="indefinite"/>
-                        </circle>
-                        <text x="272" y="200" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="700">NYC ⭐</text>
+                        <path d="M45 27 Q38 30, 30 33 Q27 34, 24 35" 
+                              fill="none" stroke="url(#pathGradient)" stroke-width="0.4" stroke-dasharray="1,0.5" opacity="0.8"/>
                     </svg>
                 </div>
             </div>
