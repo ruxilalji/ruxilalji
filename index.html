@@ -521,11 +521,103 @@
         /* Map Section */
         .map-container {
             position: relative;
-            background: rgba(245, 237, 224, 0.8);
+            background: rgba(245, 237, 224, 0.9);
             border-radius: 1.5rem;
             padding: 2rem;
             overflow: hidden;
             border: 1px solid rgba(139, 90, 60, 0.2);
+        }
+
+        .map-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.85;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .map-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--terracotta);
+            border: 3px solid var(--cream);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            pointer-events: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .map-dot:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            box-shadow: 0 4px 15px rgba(160, 82, 45, 0.5);
+        }
+
+        .map-dot.current {
+            width: 22px;
+            height: 22px;
+            background: var(--brown-rich);
+            border-width: 4px;
+            animation: pulse-strong 1.5s ease-in-out infinite;
+        }
+
+        .map-dot-label {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .map-dot:hover .map-dot-label {
+            opacity: 1;
+        }
+
+        .journey-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 0 rgba(160, 82, 45, 0.4); }
+            50% { box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 8px rgba(160, 82, 45, 0); }
+        }
+
+        @keyframes pulse-strong {
+            0%, 100% { box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 0 rgba(107, 61, 46, 0.5); }
+            50% { box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 12px rgba(107, 61, 46, 0); }
         }
 
         .map-svg {
@@ -918,137 +1010,127 @@
                 <p class="section-subtitle">My journey across the map</p>
             </div>
             <div class="map-container">
-                <svg class="map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#A0522D;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#6B3D2E;stop-opacity:1" />
-                        </linearGradient>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
+                <div class="map-image-wrapper">
+                    <img src="worldmap.png" alt="World Map" class="map-image">
                     
-                    <!-- World Map Background -->
-                    <!-- North America -->
-                    <path d="M80 80 Q120 60, 180 70 Q220 55, 260 65 L280 75 Q300 65, 320 75 L330 90 Q340 110, 330 130 Q310 150, 280 155 L240 160 Q200 165, 160 155 Q130 145, 120 125 Q110 105, 80 80 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- USA -->
-                    <path d="M100 130 Q140 120, 180 125 Q220 115, 260 125 Q300 120, 330 135 L340 155 Q350 185, 340 215 Q320 240, 280 250 L230 255 Q180 250, 140 240 Q110 230, 100 200 Q90 165, 100 130 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Mexico & Central America -->
-                    <path d="M140 240 Q170 235, 200 250 Q220 270, 225 295 Q215 320, 195 330 Q170 335, 155 315 Q145 285, 140 240 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- South America -->
-                    <path d="M220 330 Q250 320, 280 345 Q305 385, 295 430 Q280 470, 255 485 Q225 490, 205 465 Q190 430, 200 385 Q210 350, 220 330 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Greenland -->
-                    <path d="M320 40 Q360 30, 390 50 Q405 75, 390 95 Q365 105, 340 90 Q320 70, 320 40 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- UK & Ireland -->
-                    <path d="M430 95 Q445 85, 455 100 Q460 120, 450 135 Q435 140, 425 125 Q420 108, 430 95 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Europe -->
-                    <path d="M460 85 Q510 70, 560 85 Q600 80, 620 105 Q630 135, 615 160 Q585 180, 540 175 Q490 175, 460 160 Q440 140, 450 115 Q455 95, 460 85 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Scandinavia -->
-                    <path d="M480 45 Q510 35, 540 50 Q560 40, 570 60 Q575 85, 555 95 Q525 100, 500 85 Q480 70, 480 45 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Africa -->
-                    <path d="M460 185 Q510 175, 560 195 Q595 220, 605 275 Q610 340, 590 400 Q560 450, 510 460 Q455 455, 430 410 Q415 355, 430 290 Q445 225, 460 185 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Middle East -->
-                    <path d="M570 150 Q610 140, 650 160 Q680 190, 665 225 Q640 250, 600 240 Q570 220, 570 185 Q568 165, 570 150 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Russia/Northern Asia -->
-                    <path d="M620 50 Q720 30, 820 50 Q900 45, 950 80 Q970 120, 950 150 Q900 170, 820 160 Q720 165, 640 140 Q610 110, 620 50 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- India -->
-                    <path d="M680 195 Q720 180, 755 210 Q775 260, 755 310 Q720 345, 680 320 Q650 280, 665 240 Q672 210, 680 195 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- China -->
-                    <path d="M760 140 Q820 125, 870 150 Q900 180, 885 220 Q855 250, 800 245 Q755 235, 745 200 Q740 165, 760 140 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Southeast Asia -->
-                    <path d="M780 250 Q820 240, 855 270 Q880 310, 860 355 Q825 385, 785 365 Q760 330, 770 290 Q775 265, 780 250 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Japan -->
-                    <path d="M900 145 Q920 135, 930 160 Q935 190, 915 210 Q895 215, 885 190 Q880 165, 900 145 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- Australia -->
-                    <path d="M810 390 Q870 370, 920 400 Q960 440, 945 485 Q910 515, 855 520 Q800 510, 780 470 Q770 425, 810 390 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    <!-- New Zealand -->
-                    <path d="M945 480 Q960 475, 965 495 Q965 515, 950 520 Q940 515, 945 480 Z" fill="var(--tan)" stroke="var(--brown)" stroke-width="0.5"/>
-                    
-                    <!-- Journey Path - Animated dashed line -->
-                    <!-- Gujarat, India → Columbus, OH → Findlay, OH → Seattle, WA → London, UK → NYC -->
-                    <!-- Coordinates: Gujarat(710,250), Columbus(230,180), Findlay(225,170), Seattle(125,145), London(445,110), NYC(290,175) -->
-                    
-                    <path d="M710 250 
-                             Q600 200, 500 190
-                             Q400 180, 290 175
-                             L230 180
-                             L225 170
-                             Q175 160, 125 145" 
-                          fill="none" 
-                          stroke="url(#pathGradient)" 
-                          stroke-width="3" 
-                          stroke-dasharray="8,4"
-                          filter="url(#glow)"
-                          opacity="0.9">
-                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-                    </path>
-                    
-                    <path d="M125 145
-                             Q250 100, 380 95
-                             Q420 100, 445 110" 
-                          fill="none" 
-                          stroke="url(#pathGradient)" 
-                          stroke-width="3" 
-                          stroke-dasharray="8,4"
-                          filter="url(#glow)"
-                          opacity="0.9">
-                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-                    </path>
-                    
-                    <path d="M445 110
-                             Q400 130, 350 150
-                             Q320 165, 290 175" 
-                          fill="none" 
-                          stroke="url(#pathGradient)" 
-                          stroke-width="3" 
-                          stroke-dasharray="8,4"
-                          filter="url(#glow)"
-                          opacity="0.9">
-                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-                    </path>
-                    
-                    <!-- Location Dots -->
-                    <!-- Gujarat, India -->
-                    <circle cx="710" cy="250" r="8" fill="var(--terracotta)" stroke="var(--cream)" stroke-width="2" filter="url(#glow)">
-                        <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="710" y="275" text-anchor="middle" fill="var(--charcoal)" font-size="11" font-weight="600">Gujarat</text>
-                    
-                    <!-- Columbus, OH -->
-                    <circle cx="230" cy="180" r="6" fill="var(--terracotta)" stroke="var(--cream)" stroke-width="2">
-                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="230" y="200" text-anchor="middle" fill="var(--charcoal)" font-size="10" font-weight="500">Columbus</text>
-                    
-                    <!-- Findlay, OH -->
-                    <circle cx="225" cy="170" r="5" fill="var(--terracotta)" stroke="var(--cream)" stroke-width="2">
-                        <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="250" y="160" text-anchor="start" fill="var(--charcoal)" font-size="10" font-weight="500">Findlay</text>
-                    
-                    <!-- Seattle, WA -->
-                    <circle cx="125" cy="145" r="6" fill="var(--terracotta)" stroke="var(--cream)" stroke-width="2">
-                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="125" y="165" text-anchor="middle" fill="var(--charcoal)" font-size="10" font-weight="500">Seattle</text>
-                    
-                    <!-- London, UK -->
-                    <circle cx="445" cy="110" r="6" fill="var(--terracotta)" stroke="var(--cream)" stroke-width="2">
-                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="445" y="95" text-anchor="middle" fill="var(--charcoal)" font-size="10" font-weight="500">London</text>
-                    
-                    <!-- NYC - Current (larger, highlighted) -->
-                    <circle cx="290" cy="175" r="10" fill="var(--brown-rich)" stroke="var(--cream)" stroke-width="3" filter="url(#glow)">
-                        <animate attributeName="r" values="10;13;10" dur="1.5s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="290" y="160" text-anchor="middle" fill="var(--charcoal)" font-size="11" font-weight="700">NYC ⭐</text>
-                </svg>
+                    <!-- SVG Overlay for lines and dots -->
+                    <svg class="map-overlay" viewBox="0 0 1160 650" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#A0522D;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#6B3D2E;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Journey Path Lines -->
+                        <!-- Gujarat → Columbus → Findlay → Seattle → London → NYC -->
+                        <!-- Based on image coords: Gujarat(720,290), Columbus(255,225), Findlay(252,215), Seattle(145,185), London(490,155), NYC(305,215) -->
+                        
+                        <!-- Gujarat to Columbus (across the Pacific/Atlantic) -->
+                        <path d="M720 290 
+                                 Q620 250, 520 235
+                                 Q420 220, 305 215
+                                 L255 225" 
+                              fill="none" 
+                              stroke="url(#pathGradient)" 
+                              stroke-width="3" 
+                              stroke-dasharray="10,5"
+                              filter="url(#glow)"
+                              opacity="0.85">
+                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="4s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Columbus to Findlay -->
+                        <path d="M255 225 L252 215" 
+                              fill="none" 
+                              stroke="url(#pathGradient)" 
+                              stroke-width="3" 
+                              stroke-dasharray="10,5"
+                              filter="url(#glow)"
+                              opacity="0.85"/>
+                        
+                        <!-- Findlay to Seattle -->
+                        <path d="M252 215 Q200 200, 145 185" 
+                              fill="none" 
+                              stroke="url(#pathGradient)" 
+                              stroke-width="3" 
+                              stroke-dasharray="10,5"
+                              filter="url(#glow)"
+                              opacity="0.85">
+                            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Seattle to London (over Atlantic) -->
+                        <path d="M145 185 
+                                 Q280 120, 400 140
+                                 Q450 145, 490 155" 
+                              fill="none" 
+                              stroke="url(#pathGradient)" 
+                              stroke-width="3" 
+                              stroke-dasharray="10,5"
+                              filter="url(#glow)"
+                              opacity="0.85">
+                            <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3.5s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- London to NYC -->
+                        <path d="M490 155 
+                                 Q420 170, 350 190
+                                 Q330 200, 305 215" 
+                              fill="none" 
+                              stroke="url(#pathGradient)" 
+                              stroke-width="3" 
+                              stroke-dasharray="10,5"
+                              filter="url(#glow)"
+                              opacity="0.85">
+                            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Location Dots with Labels -->
+                        <!-- Gujarat, India -->
+                        <circle cx="720" cy="290" r="10" fill="#A0522D" stroke="#FAF7F2" stroke-width="3" filter="url(#glow)">
+                            <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="720" y="320" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="600">Gujarat</text>
+                        
+                        <!-- Columbus, OH -->
+                        <circle cx="255" cy="225" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                            <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="255" y="250" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Columbus</text>
+                        
+                        <!-- Findlay, OH -->
+                        <circle cx="252" cy="215" r="6" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="280" y="205" text-anchor="start" fill="#2C2C2C" font-size="11" font-weight="500">Findlay</text>
+                        
+                        <!-- Seattle, WA -->
+                        <circle cx="145" cy="185" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                            <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="145" y="210" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">Seattle</text>
+                        
+                        <!-- London, UK -->
+                        <circle cx="490" cy="155" r="8" fill="#A0522D" stroke="#FAF7F2" stroke-width="2">
+                            <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="490" y="140" text-anchor="middle" fill="#2C2C2C" font-size="12" font-weight="500">London</text>
+                        
+                        <!-- NYC - Current (larger, highlighted) -->
+                        <circle cx="305" cy="215" r="12" fill="#6B3D2E" stroke="#FAF7F2" stroke-width="4" filter="url(#glow)">
+                            <animate attributeName="r" values="12;15;12" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="305" y="195" text-anchor="middle" fill="#2C2C2C" font-size="14" font-weight="700">NYC ⭐</text>
+                    </svg>
+                </div>
             </div>
             
             <div class="locations-list">
