@@ -518,6 +518,108 @@
             color: var(--terracotta);
         }
 
+        /* Map Section */
+        .map-container {
+            position: relative;
+            background: rgba(245, 237, 224, 0.8);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            overflow: hidden;
+            border: 1px solid rgba(139, 90, 60, 0.2);
+        }
+
+        .map-svg {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .map-svg path {
+            fill: var(--tan);
+            stroke: var(--brown);
+            stroke-width: 0.5;
+            transition: fill 0.3s ease;
+        }
+
+        .map-svg path:hover {
+            fill: var(--tan-dark);
+        }
+
+        .map-pin {
+            position: absolute;
+            transform: translate(-50%, -100%);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .map-pin:hover {
+            transform: translate(-50%, -100%) scale(1.2);
+        }
+
+        .map-pin-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .map-pin-label {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .map-pin:hover .map-pin-label {
+            opacity: 1;
+        }
+
+        .locations-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .location-card {
+            background: rgba(44, 44, 44, 0.85);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-icon {
+            font-size: 2rem;
+        }
+
+        .location-info h4 {
+            color: var(--cream);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .location-info p {
+            color: var(--tan);
+            font-size: 0.875rem;
+        }
+
         /* Footer */
         footer {
             padding: 2rem 1.5rem;
@@ -803,6 +905,75 @@
                 <div class="button-group">
                     <a href="#gallery" class="glass btn">Explore Gallery</a>
                     <a href="#blog" class="glass btn">Read Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Places I've Lived Section -->
+    <section id="places" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Places I've Called Home</h2>
+                <p class="section-subtitle">My journey across the map</p>
+            </div>
+            <div class="map-container">
+                <svg class="map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Simplified World Map -->
+                    <!-- North America -->
+                    <path d="M150 120 Q180 100, 220 110 Q260 95, 300 100 Q320 90, 340 100 L350 120 Q360 140, 350 160 Q340 180, 320 190 L280 200 Q260 210, 240 200 Q220 195, 200 200 L180 210 Q160 200, 150 180 Q140 160, 150 140 Z" />
+                    <!-- USA -->
+                    <path d="M150 180 Q170 170, 200 175 Q240 165, 280 175 Q320 165, 350 180 L360 200 Q370 230, 360 260 Q340 280, 300 285 L260 290 Q220 285, 180 275 Q150 265, 140 240 Q130 210, 150 180 Z" />
+                    <!-- Mexico & Central America -->
+                    <path d="M180 275 Q200 270, 230 280 Q250 290, 260 310 Q250 330, 230 340 Q210 350, 190 340 Q170 325, 175 300 Q178 285, 180 275 Z" />
+                    <!-- South America -->
+                    <path d="M260 340 Q280 330, 310 350 Q330 380, 320 420 Q310 460, 290 480 Q270 490, 250 480 Q230 460, 240 420 Q250 380, 260 340 Z" />
+                    <!-- Europe -->
+                    <path d="M450 100 Q480 90, 520 100 Q560 95, 580 110 Q590 130, 580 150 Q560 165, 520 170 Q480 175, 450 165 Q430 150, 440 130 Q445 110, 450 100 Z" />
+                    <!-- Africa -->
+                    <path d="M460 180 Q500 170, 540 185 Q570 200, 580 240 Q585 290, 570 340 Q550 380, 520 390 Q480 395, 450 370 Q430 340, 440 290 Q450 230, 460 180 Z" />
+                    <!-- Asia -->
+                    <path d="M600 80 Q680 60, 760 80 Q840 70, 880 100 Q900 140, 880 180 Q850 220, 800 230 Q740 240, 680 220 Q620 200, 600 160 Q590 120, 600 80 Z" />
+                    <!-- Middle East -->
+                    <path d="M560 150 Q590 140, 620 155 Q640 175, 630 200 Q610 220, 580 215 Q555 200, 560 175 Q562 160, 560 150 Z" />
+                    <!-- India -->
+                    <path d="M680 200 Q720 190, 740 220 Q750 260, 730 290 Q700 310, 670 290 Q650 260, 665 230 Q672 210, 680 200 Z" />
+                    <!-- Southeast Asia -->
+                    <path d="M760 220 Q800 210, 830 240 Q850 280, 830 320 Q800 340, 770 320 Q750 290, 760 250 Q762 230, 760 220 Z" />
+                    <!-- Australia -->
+                    <path d="M780 360 Q830 340, 880 360 Q920 390, 910 430 Q890 460, 840 470 Q790 465, 770 430 Q760 390, 780 360 Z" />
+                    <!-- Japan -->
+                    <path d="M870 140 Q890 130, 900 150 Q905 175, 890 190 Q870 195, 860 175 Q855 155, 870 140 Z" />
+                </svg>
+                
+                <!-- Location markers - adjust positions based on actual places -->
+                <div class="map-pin" style="left: 25%; top: 55%;">
+                    <span class="map-pin-icon">📍</span>
+                    <span class="map-pin-label">Add your city!</span>
+                </div>
+            </div>
+            
+            <div class="locations-list">
+                <div class="location-card">
+                    <span class="location-icon">🏠</span>
+                    <div class="location-info">
+                        <h4>Your Hometown</h4>
+                        <p>Where it all began</p>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <span class="location-icon">🎓</span>
+                    <div class="location-info">
+                        <h4>College City</h4>
+                        <p>The learning years</p>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <span class="location-icon">💼</span>
+                    <div class="location-info">
+                        <h4>Current City</h4>
+                        <p>Home sweet home</p>
+                    </div>
                 </div>
             </div>
         </div>
