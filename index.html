@@ -679,7 +679,7 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
             margin-top: 2rem;
             padding: 2rem 0;
         }
@@ -711,30 +711,31 @@
             overflow: hidden;
         }
 
-        /* Varied transforms for organic feel */
-        .location-item:nth-child(1) .location-card { transform: rotate(-3deg); }
-        .location-item:nth-child(3) .location-card { transform: rotate(2deg) translateY(-8px); }
-        .location-item:nth-child(5) .location-card { transform: rotate(-2deg) translateY(5px); }
-        .location-item:nth-child(7) .location-card { transform: rotate(3deg); }
-        .location-item:nth-child(9) .location-card { transform: rotate(-1deg) translateY(-5px); }
-        .location-item:nth-child(11) .location-card { transform: rotate(2deg) translateY(3px); }
-
         .location-card:hover {
-            transform: scale(1.15) rotate(0deg) !important;
+            transform: scale(1.15) !important;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             z-index: 10;
         }
 
         .location-icon {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .location-info h4 {
             color: var(--cream);
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             margin-bottom: 0;
             white-space: nowrap;
             text-align: center;
+            line-height: 1.2;
         }
 
         .location-info p {
@@ -744,16 +745,12 @@
 
         .journey-arrow {
             color: var(--terracotta);
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             opacity: 0.7;
+            display: flex;
+            align-items: center;
             animation: pulseArrow 2s ease-in-out infinite;
-            transform: rotate(-10deg);
         }
-
-        .journey-arrow:nth-of-type(2) { animation-delay: 0.3s; transform: rotate(5deg); }
-        .journey-arrow:nth-of-type(3) { animation-delay: 0.6s; transform: rotate(-5deg); }
-        .journey-arrow:nth-of-type(4) { animation-delay: 0.9s; transform: rotate(10deg); }
-        .journey-arrow:nth-of-type(5) { animation-delay: 1.2s; transform: rotate(-3deg); }
 
         @keyframes pulseArrow {
             0%, 100% { opacity: 0.5; transform: translateX(0); }
