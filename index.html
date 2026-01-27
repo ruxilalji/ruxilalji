@@ -756,6 +756,136 @@
             50% { opacity: 1; transform: translateX(3px); }
         }
 
+        /* Professional Journey */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--tan), var(--terracotta), var(--brown-rich));
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            margin-right: 3rem;
+            margin-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1rem;
+            height: 1rem;
+            background: var(--terracotta);
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(160, 82, 45, 0.4);
+        }
+
+        .timeline-item.current .timeline-dot {
+            width: 1.25rem;
+            height: 1.25rem;
+            background: var(--brown-rich);
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { box-shadow: 0 0 15px rgba(107, 61, 46, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(107, 61, 46, 0.8); }
+        }
+
+        .timeline-content {
+            width: calc(50% - 2rem);
+            padding: 1.5rem;
+            background: rgba(61, 35, 23, 0.85);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--terracotta);
+            color: var(--cream);
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--cream);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content .company {
+            color: var(--tan);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--cream-light);
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 1rem;
+            }
+
+            .timeline-dot {
+                left: 1rem;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                width: calc(100% - 3rem);
+                margin-left: 3rem;
+                margin-right: 0;
+                text-align: left;
+            }
+        }
+
         /* Footer */
         footer {
             padding: 2rem 1.5rem;
@@ -1106,6 +1236,58 @@
                         <div class="location-info">
                             <h4>New York City</h4>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey Section -->
+    <section id="career" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Journey</h2>
+                <p class="section-subtitle">Where I've grown and learned</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item current">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Present</span>
+                        <h4>Your Current Role</h4>
+                        <p class="company">Current Company</p>
+                        <p>Brief description of what you do and your impact.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">20XX - 20XX</span>
+                        <h4>Previous Role</h4>
+                        <p class="company">Previous Company</p>
+                        <p>What you accomplished and skills you developed.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">20XX - 20XX</span>
+                        <h4>Earlier Role</h4>
+                        <p class="company">Earlier Company</p>
+                        <p>Your responsibilities and achievements.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">20XX</span>
+                        <h4>Education / First Role</h4>
+                        <p class="company">University or First Company</p>
+                        <p>Where your journey began.</p>
                     </div>
                 </div>
             </div>
