@@ -686,27 +686,26 @@
 
         .location-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 0.5rem;
         }
 
         .location-card {
             background: rgba(61, 35, 23, 0.85);
-            padding: 0.9rem 1.3rem;
+            width: 5.5rem;
+            height: 5.5rem;
+            border-radius: 50%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.75rem;
+            justify-content: center;
+            gap: 0.25rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            text-align: center;
+            padding: 0.5rem;
         }
-
-        /* Organic border-radius variations */
-        .location-card:nth-child(1) { border-radius: 40% 60% 55% 45% / 55% 45% 55% 45%; }
-        .location-card:nth-child(2) { border-radius: 55% 45% 40% 60% / 45% 60% 40% 55%; }
-        .location-card:nth-child(3) { border-radius: 45% 55% 60% 40% / 60% 40% 55% 45%; }
-        .location-card:nth-child(4) { border-radius: 60% 40% 45% 55% / 40% 55% 60% 45%; }
-        .location-card:nth-child(5) { border-radius: 50% 50% 40% 60% / 55% 45% 50% 50%; }
-        .location-card:nth-child(6) { border-radius: 35% 65% 50% 50% / 50% 50% 65% 35%; }
 
         /* Varied transforms for organic feel */
         .location-item:nth-child(1) .location-card { transform: rotate(-3deg); }
@@ -717,20 +716,21 @@
         .location-item:nth-child(11) .location-card { transform: rotate(2deg) translateY(3px); }
 
         .location-card:hover {
-            transform: scale(1.08) rotate(0deg) !important;
+            transform: scale(1.15) rotate(0deg) !important;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             z-index: 10;
         }
 
         .location-icon {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
         }
 
         .location-info h4 {
             color: var(--cream);
-            font-size: 1rem;
+            font-size: 0.65rem;
             margin-bottom: 0;
             white-space: nowrap;
+            text-align: center;
         }
 
         .location-info p {
