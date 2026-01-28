@@ -760,6 +760,34 @@
             50% { opacity: 1; transform: translateX(3px); }
         }
 
+        /* Skills Section */
+        .skills-section {
+            margin-bottom: 3rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background: rgba(61, 35, 23, 0.85);
+            color: var(--cream);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         /* Professional Journey */
         .timeline {
             position: relative;
@@ -1174,10 +1202,11 @@
                 <div class="hero-icon animate-float">
                     <img src="profile.jpg" alt="Ruxi">
                 </div>
-                <h2 class="hero-title">Hi I'm Ruxi</h2>
-                <p class="hero-text">A glimpse into my life - and my FBI agent's favorite reality show</p>
+                <h2 class="hero-title">Hi, I'm Ruxi</h2>
+                <p class="hero-text">Product Manager | Problem Solver | Building delightful user experiences</p>
                 <div class="button-group">
-                    <a href="#gallery" class="glass btn">Explore Gallery</a>
+                    <a href="#career" class="glass btn">View Experience</a>
+                    <a href="#links" class="glass btn btn-secondary">Connect</a>
                     <a href="#blog" class="glass btn">Read Blog</a>
                 </div>
             </div>
@@ -1257,14 +1286,25 @@
                 <p class="section-subtitle">Where I've grown and learned</p>
             </div>
             
+            <div class="skills-section">
+                <div class="skills-container">
+                    <span class="skill-tag">Product Strategy</span>
+                    <span class="skill-tag">User Research</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Cross-functional Leadership</span>
+                    <span class="skill-tag">Roadmap Planning</span>
+                </div>
+            </div>
+
             <div class="timeline">
                 <div class="timeline-item current">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">Present</span>
-                        <h4>Your Current Role</h4>
-                        <p class="company">Current Company</p>
-                        <p>Brief description of what you do and your impact.</p>
+                        <h4>Product Manager</h4>
+                        <p class="company">Your Current Company</p>
+                        <p>Leading product initiatives, driving user-centric solutions, and collaborating with engineering teams to deliver impactful features.</p>
                     </div>
                 </div>
                 
@@ -1272,9 +1312,9 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">20XX - 20XX</span>
-                        <h4>Previous Role</h4>
+                        <h4>Associate Product Manager</h4>
                         <p class="company">Previous Company</p>
-                        <p>What you accomplished and skills you developed.</p>
+                        <p>Owned end-to-end product lifecycle, conducted user research, and increased engagement metrics by X%.</p>
                     </div>
                 </div>
                 
@@ -1282,9 +1322,9 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">20XX - 20XX</span>
-                        <h4>Earlier Role</h4>
+                        <h4>Business Analyst / PM Intern</h4>
                         <p class="company">Earlier Company</p>
-                        <p>Your responsibilities and achievements.</p>
+                        <p>Analyzed market trends, created PRDs, and supported product launches.</p>
                     </div>
                 </div>
                 
@@ -1292,9 +1332,9 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">20XX</span>
-                        <h4>Education / First Role</h4>
-                        <p class="company">University or First Company</p>
-                        <p>Where your journey began.</p>
+                        <h4>Bachelor's Degree</h4>
+                        <p class="company">Your University</p>
+                        <p>Relevant coursework, projects, and extracurricular leadership.</p>
                     </div>
                 </div>
             </div>
